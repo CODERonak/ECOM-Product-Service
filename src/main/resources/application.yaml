@@ -1,0 +1,16 @@
+server:
+  port: 9092
+
+spring:
+  application:
+    name: product-service
+
+# Using local db for development purposes
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/PRODUCT
+
+  security:
+    user:
+      name: boot
+      password: spring  
