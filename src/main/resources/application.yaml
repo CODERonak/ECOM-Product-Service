@@ -4,7 +4,6 @@ server:
 spring:
   application:
     name: product-service
-
 # Using local db for development purposes
   data:
     mongodb:
