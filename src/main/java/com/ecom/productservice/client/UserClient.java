@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface UserClient {
 
     // Mirrors POST /users/validate in User Service
-    @PostMapping("/users/validate")
+    @PostMapping("api/auth/validate")
     Boolean validateToken(@RequestParam("token") String token);
 
     // Mirrors GET /users/email in User Service
-    @GetMapping("/users/email")
+    @GetMapping("api/auth/email")
     String extractEmailFromToken(@RequestParam("token") String token);
 }
