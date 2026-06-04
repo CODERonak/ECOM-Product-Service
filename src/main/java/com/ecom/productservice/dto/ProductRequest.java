@@ -4,6 +4,9 @@ import jakarta.validation.constraints.*;
 
 import java.math.BigDecimal;
 
+import com.ecom.productservice.model.enums.ProductCategory;
+import com.ecom.productservice.model.enums.ProductStatus;
+
 import lombok.*;
 
 @Getter
@@ -27,11 +30,12 @@ public class ProductRequest {
     @Min(value = 0, message = "Stock quantity cannot be negative")
     private Integer stockQuantity;
 
-    @NotBlank(message = "Category is required")
-    private String category;
+    @NotNull(message = "Category is required")
+    private ProductCategory category;
+
+    @NotNull(message = "Status is required")
+    private ProductStatus status;
 
     @NotBlank(message = "Brand is required")
     private String brand;
-
-    private String productImg;
 }
