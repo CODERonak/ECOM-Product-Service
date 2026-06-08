@@ -4,10 +4,12 @@ server:
 spring:
   application:
     name: product-service
-# Using local db for development purposes
+# 
   data:
     mongodb:
-      uri: mongodb://localhost:27017/PRODUCT
+      uri: ${MONGODB_URI}
+      database: PRODUCTS
+      auto-index-creation: true
 
   security:
     user:

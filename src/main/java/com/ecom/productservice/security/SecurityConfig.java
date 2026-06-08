@@ -13,30 +13,31 @@ import lombok.RequiredArgsConstructor;
 @Configuration
 @RequiredArgsConstructor
 public class SecurityConfig {
-    private final JWTFilter jwtFilter;
+        private final JWTFilter jwtFilter;
 
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http
-                .csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers(
-                                "/api/products/",
-                                "/api/products/category/{category}",
-"/api/products/all",
-"/api/products/{id}",
-"/api/products/price-range/{min}/{max}",
-                                "/swagger-ui/**",
-                                "/v3/api-docs*/**",
-                                "/swagger-ui.html")
-                        .permitAll()
-                        .anyRequest().authenticated())
-                .httpBasic(Customizer.withDefaults())
-                .formLogin(formLogin -> formLogin.disable())
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+        @Bean
+        public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+                http
+                                .csrf(csrf -> csrf.disable())
+                                .authorizeHttpRequests((requests) -> requests
+                                                .requestMatchers(
+                                                                "/api/products/",
+                                                                "/api/products/category/{category}",
+                                                                "/api/products/all",
+                                                                "/api/products/{id}",
+                                                                "/api/products/price-range/{min}/{max}",
+                                                                "/swagger-ui/**",
+                                                                "/v3/api-docs*/**",
+                                                                "/swagger-ui.html")
+                                                .permitAll()
+                                                .anyRequest().authenticated())
+                                .httpBasic(Customizer.withDefaults())
+                                .formLogin(formLogin -> formLogin.disable())
+                                .sessionManagement(session -> session
+                                                .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 
-                .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+                                .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
-        return http.build();
-    }
+                return http.build();
+        }
 }
