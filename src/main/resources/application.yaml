@@ -4,7 +4,8 @@ server:
 spring:
   application:
     name: product-service
-# 
+
+# Using Mongo DB Atlas cloud
   data:
     mongodb:
       uri: ${MONGODB_URI}
@@ -14,15 +15,11 @@ spring:
   security:
     user:
       name: boot
-      password: spring  
+      password: spring    
 
-eureka:
-  instance:
-    prefer-ip-address: true
-  client:
-    serviceUrl:
-      defaultZone: ${EUREKA_SERVER_URL}      
-
+user:
+  service:
+    url: ${ECOM_USER_SERVICE_URL}
 
 # logging:
 #   level:
